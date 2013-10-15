@@ -4,8 +4,9 @@
   "dependencies": {<% if (compassBootstrap) { %>
     "sass-bootstrap": "~3.0.0",<% } %><% if (includeModernizr) { %>
     "modernizr": "~2.6.2",<% } %><% if (compassSusy) { %>
-    "susy": "~2.0.0",<% } %><% if (jquery) { %>
-    "jquery": "~1.10.2"<% } %>
+    "susy": "~1.0.9",<% } %><% if (jquery) { %>
+    "jquery": "~1.10.2",<% } %><% if (foundation) { %>
+    "foundation": "~4.3.2"<% } %>
   },
   "devDependencies": {}
 }

@@ -14,7 +14,11 @@
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild --><% if (includeModernizr) { %>
         <!-- build:js scripts/vendor/modernizr.js -->
+        <% if (!foundation) { %>
         <script src="bower_components/modernizr/modernizr.js"></script>
+        <% } else { %>
+        <script src="bower_components/foundation/js/vendor/custom.modernizr.js"></script>
+        <% } %>
         <!-- endbuild --><% } %>
     </head>
     <body>
@@ -58,7 +62,98 @@
             </div>
 
         </div>
-        <% } else { // compassBootstrap %>
+        <% } else if (compassSusy) { %>
+        <div id="container">
+            <h1>Lorem Ipsum</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque rutrum malesuada mauris, id commodo enim sodales quis. Mauris vitae dapibus erat. Vivamus nec mi interdum nisl lobortis rhoncus. Cras nec dictum sem. Vestibulum dapibus nunc turpis, laoreet rutrum orci dapibus varius. In vehicula lorem quis magna tempor tincidunt et eleifend ligula. Nunc pharetra iaculis interdum. Duis porta porttitor metus, posuere facilisis magna semper quis. Curabitur tincidunt egestas ligula, ac venenatis tellus commodo a. Donec iaculis convallis porttitor. Donec lacinia eleifend dolor sit amet lobortis. Ut condimentum vel velit et egestas. Nullam vel dolor congue, facilisis eros ut, condimentum dolor. Nullam ornare eros ac pharetra venenatis.</p>
+            <h2>Dolor</h2>
+            <p>Nam lacinia lorem quis nisi fringilla, non bibendum sem sagittis. Sed at purus cursus, accumsan tortor nec, aliquet tortor. Aenean sit amet fermentum enim. Proin leo mauris, auctor sed blandit eu, accumsan quis leo. Vestibulum eu neque ac elit euismod eleifend non nec enim. Etiam quis aliquet dui. Etiam ac consequat orci, a hendrerit dolor.</p> 
+            <p>Proin faucibus adipiscing diam vitae eleifend. Nunc sit amet ipsum faucibus, ultrices dolor vel, ultrices nisl. Nunc mollis, justo eu pulvinar faucibus, mi libero lobortis justo, ut aliquet neque metus et neque. Nunc consectetur, purus hendrerit varius aliquam, turpis nisi ultrices purus, quis mattis justo sem eget nisi. Integer porttitor aliquet leo, ut porttitor arcu pharetra in. Duis nec viverra lorem. Donec a risus interdum, pellentesque risus quis, scelerisque purus. Suspendisse potenti. Phasellus iaculis, mi sed convallis mollis, elit quam aliquam dolor, eget pellentesque leo mi at ligula.</p>
+            <h1>Lorem Ipsum</h1>
+            <p>Curabitur lacinia vehicula ultricies. Phasellus tincidunt, eros a consectetur posuere, magna nisl condimentum diam, eget condimentum eros mi a lacus. In hac habitasse platea dictumst. Ut at dui nec nunc pellentesque blandit eget ut purus. Sed dignissim malesuada ligula et suscipit. Sed tincidunt libero mi, blandit consequat justo molestie nec. Nulla facilisi.</p>
+        </div>
+        <% } else if (foundation) { %>
+        <div class="row">
+        <div class="large-12 columns">
+            <h2>Welcome to Foundation</h2>
+            <p>This is version 4.2.0.</p>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-8 columns">
+            <h3>The Grid</h3>
+
+            <!-- Grid Example -->
+            <div class="row">
+                <div class="large-12 columns">
+                    <div class="panel">
+                        <p>This is a twelve column section in a row. Each of these includes a div.panel element so you can see where the columns are - it's not required at all for the grid.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <div class="panel">
+                        <p>Six columns</p>
+                    </div>
+                </div>
+                <div class="large-6 columns">
+                    <div class="panel">
+                        <p>Six columns</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-4 columns">
+                    <div class="panel">
+                        <p>Four columns</p>
+                    </div>
+                </div>
+                <div class="large-4 columns">
+                    <div class="panel">
+                        <p>Four columns</p>
+                    </div>
+                </div>
+                <div class="large-4 columns">
+                    <div class="panel">
+                        <p>Four columns</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Buttons</h3>
+
+      <div class="row">
+        <div class="large-6 columns">
+          <p><a href="#" class="small button">Small Button</a></p>
+          <p><a href="#" class="button">Medium Button</a></p>
+          <p><a href="#" class="large button">Large Button</a></p>
+        </div>
+        <div class="large-6 columns">
+          <p><a href="#" class="small alert button">Small Alert Button</a></p>
+          <p><a href="#" class="success button">Medium Success Button</a></p>
+          <p><a href="#" class="large secondary button">Large Secondary Button</a></p>
+        </div>
+      </div>
+        </div>
+
+        <div class="large-4 columns">
+            <h4>Getting Started</h4>
+            <p>We're stoked you want to try Foundation! To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
+
+            <h4>Other Resources</h4>
+            <p>Once you've exhausted the fun in this document, you should check out:</p>
+            <ul class="disc">
+                <li><a href="http://foundation.zurb.com/docs">Foundation Documentation</a><br />Everything you need to know about using the framework.</li>
+                <li><a href="http://github.com/zurb/foundation">Foundation on Github</a><br />Latest code, issue reports, feature requests and more.</li>
+                <li><a href="http://twitter.com/foundationzurb">@foundationzurb</a><br />Ping us on Twitter if you have questions. If you build something with this we'd love to see it (and send you a totally boss sticker).</li>
+            </ul>
+        </div>
+    </div>
+
+        <% } else { %>
         <div class="hero-unit">
           <h1>'Allo, 'Allo!</h1>
           <p>You now have</p>
@@ -67,12 +162,23 @@
             <% if (includeModernizr) { %><li>Modernizr</li><% } %>
           </ul>
         </div>
-        <% } // compassBootstrap %>
+        <% } %>
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <% if (jquery) { %>
+        <% if (foundation) { %>
+        <script src="bower_components/foundation/js/vendor/zepto.js"></script>
+        <% } else { %>
         <script src="bower_components/jquery/jquery.js"></script>
+        <% } %>
+        <% } %>
+        <% if (foundation) { %>
+        <% if (!jquery) { %>
+        <script src="bower_components/foundation/js/vendor/zepto.js"></script>
+        <% } else { %>
+        <script src="bower_components/foundation/js/jquery.js"></script>
+        <% } %>
         <% } %>
         <!-- endbower -->
         <!-- endbuild -->

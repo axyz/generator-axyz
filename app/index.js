@@ -69,8 +69,12 @@ AppGenerator.prototype.askFor = function askFor() {
       value: 'compassSusy',
       checked: true
     },{
-      name: 'Bootstrap for Sass',
+      name: 'Bootstrap',
       value: 'compassBootstrap',
+      checked: true
+    },{
+      name: 'Zurb Foundation',
+      value: 'foundation',
       checked: true
     }]
   }];
@@ -88,6 +92,7 @@ AppGenerator.prototype.askFor = function askFor() {
     this.includeModernizr = hasFeature('includeModernizr');
     this.compass = true;
     this.compassSusy = useFramework('compassSusy');
+    this.foundation = useFramework('foundation');
     this.jquery = hasFeature('jquery');
     this.coffee = hasFeature('coffee');
 
@@ -129,7 +134,7 @@ AppGenerator.prototype.h5bp = function h5bp() {
 };
 
 AppGenerator.prototype.mainStylesheet = function mainStylesheet() {
-  if (this.compassBootstrap || this.compass) {
+  if (this.compass) {
     this.copy('main.scss', 'app/styles/main.scss');
   } else {
     this.copy('main.css', 'app/styles/main.css');

@@ -94,12 +94,21 @@ body {
 
 <% } %>
 
+
 <% if (compassSusy) { %>
 
-@import "susy";
+@import "susy/sass/susy";
 @import "normalize";
 @import "layout";
 @import "typography";
 @import "colors";
+
+<% } %>
+
+
+<% if (foundation) { %>
+
+@import "foundation/scss/normalize";
+@import "foundation/scss/foundation";
 
 <% } %>

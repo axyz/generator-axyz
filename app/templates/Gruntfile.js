@@ -27,7 +27,7 @@ module.exports = function (grunt) {
             coffeeTest: {
                 files: ['test/spec/{,*/}*.coffee'],
                 tasks: ['coffee:test']
-            },<% } %><% if (compass || compassBootstrap) { %>
+            },<% } %><% if (compass) { %>
             compass: {
                 files: ['<%%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass:server', 'autoprefixer']
@@ -139,7 +139,7 @@ module.exports = function (grunt) {
                     ext: '.js'
                 }]
             }
-        },<% } %><% if (compass || compassBootstrap) { %>
+        },<% } %><% if (compass) { %>
         compass: {
             options: {
                 sassDir: '<%%= yeoman.app %>/styles',
@@ -314,7 +314,7 @@ module.exports = function (grunt) {
             uglify: true
         },<% } %>
         concurrent: {
-            server: [<% if (compass || compassBootstrap) { %>
+            server: [<% if (compass) { %>
                 'compass',<% } %><% if (coffee) { %>
                 'coffee:dist',<% } %>
                 'copy:styles'
@@ -324,7 +324,7 @@ module.exports = function (grunt) {
                 'copy:styles'
             ],
             dist: [<% if (coffee) { %>
-                'coffee',<% } %><% if (compass || compassBootstrap) { %>
+                'coffee',<% } %><% if (compass) { %>
                 'compass',<% } %>
                 'copy:styles',
                 'imagemin',
