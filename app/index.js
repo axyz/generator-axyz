@@ -40,7 +40,7 @@ AppGenerator.prototype.askFor = function askFor() {
   // welcome message
   if (!this.options['skip-welcome-message']) {
     console.log(this.yeoman);
-    console.log('Out of the box I include HTML5 Boilerplate and jQuery.');
+    console.log('Out of the box I include HTML5 Boilerplate');
   }
 
   var prompts = [{
@@ -48,6 +48,22 @@ AppGenerator.prototype.askFor = function askFor() {
     name: 'features',
     message: 'What more would you like?',
     choices: [{
+      name: 'JQuery',
+      value: 'jquery',
+      checked: true
+    },{
+      name: 'CoffeScript',
+      value: 'coffee',
+      checked: true
+    },{
+      name: 'Sass and Compass',
+      value: 'compass',
+      checked: true
+    },{
+      name: 'Susy',
+      value: 'compassSusy',
+      checked: true
+    },{
       name: 'Bootstrap for Sass',
       value: 'compassBootstrap',
       checked: true
@@ -67,6 +83,10 @@ AppGenerator.prototype.askFor = function askFor() {
     // we change a bit this way of doing to automatically do this in the self.prompt() method.
     this.compassBootstrap = hasFeature('compassBootstrap');
     this.includeModernizr = hasFeature('includeModernizr');
+    this.compass = hasFeature('compass');
+    this.compassSusy = hasFeature('compassSusy');
+    this.jquery = hasFeature('jquery');
+    this.coffee = hasFeature('coffee');
 
     cb();
   }.bind(this));
@@ -106,7 +126,7 @@ AppGenerator.prototype.h5bp = function h5bp() {
 };
 
 AppGenerator.prototype.mainStylesheet = function mainStylesheet() {
-  if (this.compassBootstrap) {
+  if (this.compassBootstrap || this.compass) {
     this.copy('main.scss', 'app/styles/main.scss');
   } else {
     this.copy('main.css', 'app/styles/main.css');
