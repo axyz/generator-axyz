@@ -11,8 +11,9 @@ Yeoman generator that scaffolds out a front-end web app. forked from generator-w
 * Mocha Unit Testing with PhantomJS
 * Optional - JQuery
 * Optional - Twitter Bootstrap for SASS
-* Optional - Leaner Modernizr builds (new)
-* Optional - Susy grid system (new)
+* Optional - Zurb Foundation for SASS
+* Optional - Leaner Modernizr builds
+* Optional - Susy grid system
 
 ## Getting Started
 

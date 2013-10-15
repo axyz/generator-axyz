@@ -69,7 +69,7 @@ AppGenerator.prototype.askFor = function askFor() {
       value: 'compassSusy',
       checked: true
     },{
-      name: 'Bootstrap',
+      name: 'Twitter Bootstrap',
       value: 'compassBootstrap',
       checked: true
     },{
