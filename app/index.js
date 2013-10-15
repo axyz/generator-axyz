@@ -10,7 +10,6 @@ var AppGenerator = module.exports = function Appgenerator(args, options, config)
 
   // setup the test-framework property, Gruntfile template will need this
   this.testFramework = options['test-framework'] || 'mocha';
-  this.coffee = options.coffee;
 
   // for hooks to resolve on mocha by default
   if (!options['test-framework']) {
@@ -40,7 +39,7 @@ AppGenerator.prototype.askFor = function askFor() {
   // welcome message
   if (!this.options['skip-welcome-message']) {
     console.log(this.yeoman);
-    console.log('Out of the box I include HTML5 Boilerplate');
+    console.log('Out of the box I include HTML5 Boilerplate and Sass with Compass.');
   }
 
   var prompts = [{
@@ -52,14 +51,20 @@ AppGenerator.prototype.askFor = function askFor() {
       value: 'jquery',
       checked: true
     },{
-      name: 'CoffeScript',
+      name: 'CoffeeScript',
       value: 'coffee',
       checked: true
     },{
-      name: 'Sass and Compass',
-      value: 'compass',
+      name: 'Modernizr',
+      value: 'includeModernizr',
       checked: true
-    },{
+    }]
+  },
+  {
+    type: 'list',
+    name: 'framework',
+    message: 'What framework would you like to use?',
+    choices: [{
       name: 'Susy',
       value: 'compassSusy',
       checked: true
@@ -67,24 +72,22 @@ AppGenerator.prototype.askFor = function askFor() {
       name: 'Bootstrap for Sass',
       value: 'compassBootstrap',
       checked: true
-    }, {
-      name: 'Modernizr',
-      value: 'includeModernizr',
-      checked: true
     }]
   }];
 
   this.prompt(prompts, function (answers) {
     var features = answers.features;
+    var framework = answers.framework;
 
     function hasFeature(feat) { return features.indexOf(feat) !== -1; }
+    function useFramework(feat) { return framework.indexOf(feat) !== -1; }
 
     // manually deal with the response, get back and store the results.
     // we change a bit this way of doing to automatically do this in the self.prompt() method.
-    this.compassBootstrap = hasFeature('compassBootstrap');
+    this.compassBootstrap = useFramework('compassBootstrap');
     this.includeModernizr = hasFeature('includeModernizr');
-    this.compass = hasFeature('compass');
-    this.compassSusy = hasFeature('compassSusy');
+    this.compass = true;
+    this.compassSusy = useFramework('compassSusy');
     this.jquery = hasFeature('jquery');
     this.coffee = hasFeature('coffee');
 
@@ -176,6 +179,13 @@ AppGenerator.prototype.app = function app() {
   this.mkdir('app/styles');
   this.mkdir('app/images');
   this.write('app/index.html', this.indexFile);
+
+  if (this.compassSusy) {
+    this.copy('_colors.scss', 'app/styles/_colors.scss');
+    this.copy('_layout.scss', 'app/styles/_layout.scss');
+    this.copy('_normalize.scss', 'app/styles/_normalize.scss');
+    this.copy('_typography.scss', 'app/styles/_typography.scss');
+  }
 
   if (this.coffee) {
     this.write('app/scripts/hello.coffee', this.mainCoffeeFile);

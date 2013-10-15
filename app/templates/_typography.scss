@@ -1,0 +1,37 @@
+@import "compass/typography/vertical_rhythm";
+
+$base-font-size: 16px;
+$base-line-height: 1.5*$base-font-size;
+
+@include establish-baseline;
+
+$header-font : "Libre Baskerville";
+$body-font : "Ubuntu";
+
+@import url("http://fonts.googleapis.com/css?family="+$header-font);
+@import url("http://fonts.googleapis.com/css?family="+$body-font);
+
+
+//body {@include debug-vertical-alignment();}
+
+
+h1, h2, p, pre {
+    @include rhythm(0, 0, 0, 1, 1em);
+}
+
+h1 {
+	@include adjust-font-size-to($base-font-size*1.618*1.618);
+	@include rhythm(0, 0, 0, 1, $base-font-size*1.618*1.618);
+	font-family: $header-font;
+}
+
+h2 {
+	@include adjust-font-size-to($base-font-size*1.618);
+	@include rhythm(0, 0, 0, 0, $base-font-size*1.618);
+	font-family: $header-font;
+}
+
+p {
+	@include adjust-font-size-to($base-font-size);
+	font-family: $body-font;
+}
