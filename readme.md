@@ -16,6 +16,7 @@ Yeoman generator that scaffolds out a front-end web app. forked from generator-w
 
 ## Getting Started
 
+- Install: `npm install -g yo`
 - Install: `npm install -g generator-axyz`
 - Run: `yo axyz`
 - Run `grunt` for building and `grunt server` for preview
